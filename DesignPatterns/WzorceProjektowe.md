@@ -35,3 +35,46 @@ Przyjęło się, że struktura klas jest prezentowana przy użyciu języku UML.
 
 Każda podejmowana decyzja projektowa ma swoje plusy i minusy, wdrożenie wzorca projektowego powinno rozwiązać
 dany problem, ale może też przynieść utrudnienia lub kłócić się z innymi częściami kodu.
+
+## Przykłady wzorców z książki Matta Zandstry
+
+### Wzorce do generowania obiektów
+- Singleton
+- Factory method
+- Abstract factory
+- Prototype
+- Service Locator
+- Dependency Injection
+
+### Wzorce elastycznego programowania obiektowego
+- Composite
+- Decorator
+- Facade
+
+### Reprezentacja i realizacja zadań
+
+- Interpreter
+- Strategy
+- Observer
+- Visitor
+- Command
+- Null Object
+
+### Wzorce bazodanowe
+- Data Mapper
+- Identity Map
+- Unit of Work
+- Lazy Load
+- Domain Object Factory
+- Identity Object
+- Selection Factory
+- Update Factory
+
+### Wzorce korporacyjne
+- Registry
+- Front Controller
+- Application Controller
+- Template View
+- Page Controller
+- Transaction Script
+- Domain Model
