@@ -42,5 +42,17 @@ Https wykorzystuje protokół TLS, który zapewnia bezpieczeństwo transmisji. P
 ich zmienić w trakcie transmisji, ponieważ podsłuchujący nie zna szyfru do danych. Serwer jest uwierzytelniany jako
 właściciel domeny.
 
-Większość stron internetowych automatycznie przekierowuje z protokołu HTTP na HTTPS jeśli ktoś spróbuje dostać się
+Większość stron internetowych automatycznie przekierowuje z protokołu HTTP na HTTPS, jeśli ktoś spróbuje dostać się
 przez HTTP.
+
+### Wewnętrzne certyfikaty (Private CA) 
+
+Często w firmach tworzone są własne "urzędy weryfikacji" (CA), które
+1. Nie są publicznie zaufane przez przeglądarki
+2. Działają tylko w obrębie systemów danej firmy
+3. Wydają certyfikaty dla wewnętrznych usług
+
+Jest to robione, żeby wewnętrzne systemy mogły komunikować się ze sobą i tylko wzajemnie ze sobą.
+
+Tutaj wchodzi pojęcie mTLS (mutual TLS). Według którego nie tylko serwer, ale również klient musi się uwierzytelniać.
+Wtedy obydwie komunikujące się aplikacje muszą mieć zainstalowane certyfikaty firmy.
