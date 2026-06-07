@@ -10,7 +10,7 @@ przesyłane przez sieć pomiędzy klientem a serwerem.
 
 Wchodząc na daną stronę internetową, gdy wpiszemy protokół "https", przeglądarka musi użyć TLS.
 
-Nawiązuje więc połączenie z serwerem znajdującym się pod wpisaną domenę na porcie 443. Wysyłając do serwera:
+Nawiązuje więc połączenie z serwerem znajdującym się pod wpisaną domeną na porcie 443. Wysyłając do serwera:
 1. Wersje TLS, które obsługuje
 2. Listę szyfrów
 3. Losową wartość (do późniejszego klucza)
@@ -35,7 +35,7 @@ daną firmę też mogą wykupić sobie certyfikat TLS.
 Http i Https różnią się przede wszystkim poziomem bezpieczeństwa.
 
 Http przesyła dane jawnie, w postaci niezaszyfrowanej, nie ma mechanizmu uwierzytelniania serwera ani ochrony przed
-modyfikacją danych w trakcie transmisji. Wszystkie dane jak hasła, formularza, cookies mogą zostać przechwycone lub
+modyfikacją danych w trakcie transmisji. Wszystkie dane jak hasła, formularze, cookies mogą zostać przechwycone lub
 zmienione przez kogoś z dostępem do sieci.
 
 Https wykorzystuje protokół TLS, który zapewnia bezpieczeństwo transmisji. Przesyłane dane są szyfrowane, nie można
@@ -56,3 +56,13 @@ Jest to robione, żeby wewnętrzne systemy mogły komunikować się ze sobą i t
 
 Tutaj wchodzi pojęcie mTLS (mutual TLS). Według którego nie tylko serwer, ale również klient musi się uwierzytelniać.
 Wtedy obydwie komunikujące się aplikacje muszą mieć zainstalowane certyfikaty firmy.
+
+### Let's Encrypt
+
+Let's Encrypt to darmowy, publiczny urząd certyfikacji (CA), który wydaje certyfikaty TLS dla domen internetowych.
+
+Powstał po to, aby ułatwić wdrażanie HTTPS i zwiększyć bezpieczeństwo internetu. Certyfikaty wydawane przez 
+Let's Encrypt są zaufane przez większość współczesnych przeglądarek i systemów operacyjnych, 
+tak samo, jak certyfikaty od komercyjnych dostawców.
+
+https://letsencrypt.org/
