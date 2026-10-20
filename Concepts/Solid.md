@@ -46,6 +46,52 @@ public function presentPokemon(PokemonInterface $pokemon)
 }
 ```
 
+W przypadku gdy nasz wysoko poziomowy kod opiera się już na klasie, warto przemyśleć czy ta klasa będzie kiedyś wymienialna
+na inny obiekt o podobnym interfejsie. Np.:
+
+```php
+public function createTestDatabase(MysqlDatabaseConnector $connector)
+{
+    $this->connector->createTestDatabase();
+    
+    // reszta kodu
+}
+```
+
+Używamy specyficznie klasy łączącej się z bazą danych MySQL, jeśli w przyszłości będziemy dawać możliwości używania 
+PostgreSql lub SQLite będzie trzeba edytować funkcję `createTestDatabase` żeby nie przyjmowała za-hard-kodowanej klasy
+łączącej się z MySQL tylko interfejsu za którym będzie stać jeden z wielu silników bazy danych.
+
+```php
+interface DatabaseConnectorInterface
+{
+    public function createTestDatabase(): void;
+}
+
+class MysqlDatabaseConnector implements DatabaseConnectorInterface
+{
+    public function createTestDatabase(): void
+    {
+        // do something        
+    }
+}
+
+class MysqlPostgreSQLConnector implements DatabaseConnectorInterface
+{
+    public function createTestDatabase(): void
+    {
+        // do something        
+    }
+}
+
+public function createTestDatabase(DatabaseConnectorInterface $connector)
+{
+    $this->connector->createTestDatabase();
+    
+    // reszta kodu
+}
+```
+
 Nie znaczy to jednak, że istniejącego kodu nigdy nie wolno modyfikować. Celem tej zasady nie jest całkowite wyeliminowanie zmian, lecz ograniczenie konieczności modyfikowania stabilnego kodu za każdym razem, gdy chcemy rozszerzyć jego funkcjonalność. Jeżeli zmieniają się wymagania biznesowe albo dotychczasowa implementacja zawiera błędy, modyfikacja kodu może być jak najbardziej uzasadniona.
 
 Open/Closed Principle nie oznacza, że do każdej klasy należy od razu dodawać interfejsy i osobne implementacje. Warto je stosować tam, gdzie istnieje realna potrzeba rozszerzania funkcjonalności. W przeciwnym razie można niepotrzebnie skomplikować prosty kod.
